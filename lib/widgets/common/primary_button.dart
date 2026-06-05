@@ -35,8 +35,16 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         : isFilled
         ? AppColors.primaryPurple
         : Colors.transparent;
-    final fgColor = isWhite ? AppColors.primaryPurple : AppColors.white;
-    final borderColor = isWhite ? AppColors.white : AppColors.white;
+    final fgColor = isWhite
+        ? AppColors.primaryPurple
+        : isFilled
+        ? AppColors.white
+        : AppColors.primaryPurple;
+    final borderColor = isWhite
+        ? AppColors.white
+        : isFilled
+        ? Colors.transparent
+        : AppColors.primaryPurple;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),

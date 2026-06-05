@@ -57,7 +57,7 @@ class DownloadCtaSection extends StatelessWidget {
                   ),
                   PrimaryButton(
                     label: AppStrings.downloadApk,
-                    variant: ButtonVariant.outlined,
+                    variant: ButtonVariant.white,
                     icon: Icons.download,
                     onPressed: () => launchUrl(Uri.parse(AppLinks.downloadApk)),
                   ),
