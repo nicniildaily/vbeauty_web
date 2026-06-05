@@ -5,7 +5,9 @@ import '../core/theme/app_theme.dart';
 import 'router.dart';
 
 class VelmiqueBeautyApp extends StatelessWidget {
-  const VelmiqueBeautyApp({super.key});
+  final String initialLocation;
+
+  const VelmiqueBeautyApp({super.key, this.initialLocation = '/'});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class VelmiqueBeautyApp extends StatelessWidget {
       child: MaterialApp.router(
         title: AppStrings.appName,
         theme: AppTheme.light,
-        routerConfig: appRouter,
+        routerConfig: createRouter(initialLocation: initialLocation),
         debugShowCheckedModeBanner: false,
       ),
       breakpoints: [

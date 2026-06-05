@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velmique Beauty</title>
+  <script>
+    var path = location.pathname;
+    var segmentCount = 1;
+    var segments = path.split('/');
+    if (segments.length > segmentCount + 1) {
+      var redirect = segments.slice(segmentCount + 1).join('/');
+      sessionStorage.setItem('redirect', redirect);
+    }
+    location.replace('/vbeauty_web/');
+  </script>
+</head>
+<body></body>
+</html>
