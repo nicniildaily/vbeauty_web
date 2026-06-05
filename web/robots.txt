@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://velmiquebeauty.com/sitemap.xml
