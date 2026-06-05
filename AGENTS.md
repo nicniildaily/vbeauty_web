@@ -80,14 +80,8 @@ Always `flutter pub get` after `pubspec.yaml` changes.
 - Referenced in code without `assets/` prefix, e.g. `Image.asset('static/icons/logo.png')`
 - Unsplash/Pexels URLs still used as placeholder images in buyer/seller benefit sections
 
-## Deployment (GitHub Pages)
-
-- Workflow: `.github/workflows/deploy.yml` — triggers on push to `main`
-- Build: `flutter build web --release --base-href "/vbeauty_web/" --web-renderer html`
-- SPA routing: `web/404.html` redirects unknown paths → root via `sessionStorage`, `lib/main.dart` restores the route on startup
-- `lib/main.dart` uses `dart:html` (web-only) to read `sessionStorage['redirect']`
-
 ## Notes
 
+- No CI/CD configured
 - `.dart_tool/` and `build/` are gitignored
 - Package manager is `pub` (lockfile: `pubspec.lock`)
