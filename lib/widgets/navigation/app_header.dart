@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_strings.dart';
 
@@ -88,7 +89,17 @@ class _AppHeaderState extends State<AppHeader> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildLogo(),
+        GestureDetector(
+          onTap: () => context.go('/'),
+          child: Text(
+            AppStrings.appName,
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: AppColors.white,
+            ),
+          ),
+        ),
         Row(
           children: [
             _navLink(context, AppStrings.navHome, '/'),
@@ -129,17 +140,43 @@ class _AppHeaderState extends State<AppHeader> {
   }
 
   Widget _navLink(BuildContext context, String label, String route) {
-    final isActive = GoRouterState.of(context).uri.toString() == route;
-    return GestureDetector(
-      onTap: () => context.go(route),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: isActive ? AppColors.secondaryPurple : AppColors.white,
-          decoration: isActive ? TextDecoration.underline : null,
-          decorationColor: AppColors.secondaryPurple,
+    return _NavLink(label: label, route: route);
+  }
+}
+
+class _NavLink extends StatefulWidget {
+  final String label;
+  final String route;
+
+  const _NavLink({required this.label, required this.route});
+
+  @override
+  State<_NavLink> createState() => _NavLinkState();
+}
+
+class _NavLinkState extends State<_NavLink> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isActive = GoRouterState.of(context).uri.toString() == widget.route;
+    final showUnderline = isActive || (!isActive && _isHovered);
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => context.go(widget.route),
+        child: Text(
+          widget.label,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: isActive ? FontWeight.bold : FontWeight.w600,
+            color: AppColors.white,
+            decoration: showUnderline ? TextDecoration.underline : null,
+            decorationColor: AppColors.white,
+          ),
         ),
       ),
     );
