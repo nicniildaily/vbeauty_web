@@ -26,28 +26,13 @@ class SellerBenefitsSection extends StatelessWidget {
   }
 
   Widget _buildImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.network(
-        'assets/images/screenshots/screen_4.png',
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+      child: Image.asset(
+        'static/images/screenshots/screen_4.png',
         height: 800,
         width: 800,
         fit: BoxFit.fill,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return Container(
-            height: 400,
-            color: AppColors.lightPurple,
-            child: const Center(child: CircularProgressIndicator(color: AppColors.secondaryPurple)),
-          );
-        },
-        errorBuilder: (context, error, stackTrace) {
-          return Container(
-            height: 400,
-            color: AppColors.lightPurple,
-            child: const Center(child: Icon(Icons.image, size: 64, color: AppColors.secondaryPurple)),
-          );
-        },
       ),
     );
   }
