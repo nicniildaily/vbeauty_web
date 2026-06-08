@@ -28,12 +28,7 @@ class SellerBenefitsSection extends StatelessWidget {
   Widget _buildImage() {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-      child: Image.asset(
-        'static/images/screenshots/screen_4.png',
-        height: 800,
-        width: 800,
-        fit: BoxFit.fill,
-      ),
+      child: Image.asset('static/images/screenshots/screen_4.png', height: 800, width: 800, fit: BoxFit.fill),
     );
   }
 
